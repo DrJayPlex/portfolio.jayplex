@@ -1,10 +1,1 @@
-// Small interaction layer — keeps the portfolio lightweight and fast.
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener("click", event => {
-    const target = document.querySelector(link.getAttribute("href"));
-    if (target) {
-      event.preventDefault();
-      target.scrollIntoView({ behavior: "smooth" });
-    }
-  });
-});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");io.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll(".work-card,.road-item,.project,.section-top").forEach(e=>{e.classList.add("reveal");io.observe(e)});
